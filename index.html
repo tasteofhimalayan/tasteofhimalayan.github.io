@@ -9,102 +9,113 @@
             height: 100vh;
         }
         body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    
-    #sticky-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 9999;
-    }
-    
-    #sticky-button.open {
-      background-color: #dc3545;
-    }
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-    
-    #sticky-button.open + #image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      height: 200px;
-      width: 200px;
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease-in-out;
-      pointer-events: none;
-      z-index: 9998;
-    }
-    
-    #sticky-button.open + #image-container img {
-      height: 60px;
-      width: 60px;
-      margin: 10px;
-      border-radius: 50%;
-      pointer-events: auto;
-      transition: all 0.3s ease-in-out;
-      position: absolute;
-    }
-    
-    #sticky-button.open + #image-container img:nth-child(1) {
-      background-color: transparent;
-      right: calc( 30px);
-      bottom: calc(110px);
-    }
-    
-    #sticky-button.open + #image-container img:nth-child(2) {
-      background-color: transparent;
-      right: calc(75px);
-      bottom: calc( 60px);
-    }
-    
-    #sticky-button.open + #image-container img:nth-child(3) {
-      background-color: transparent;
-      right: calc(120px);
-      bottom: calc(10px);
-    }
-    
-    #sticky-button.open + #image-container img:hover {
-      transform: scale(1.2) rotate(0deg);
-    }
-    
-    #sticky-button.open + #image-container.open ~ #sticky-button {
-      bottom: 500px;
-    }
-  </style>
+        #sticky-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        #sticky-button.open {
+            background-color: #dc3545;
+        }
+
+        #sticky-button.open + #image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            height: 200px;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        #sticky-button.open + #image-container img {
+            height: 60px;
+            width: 60px;
+            margin: 10px;
+            border-radius: 50%;
+            pointer-events: auto;
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+        }
+
+        #sticky-button.open + #image-container #image1 {
+            background-color: transparent;
+            right: calc(30px);
+            bottom: calc(110px);
+        }
+
+        #sticky-button.open + #image-container #image2 {
+            background-color: transparent;
+            right: calc(75px);
+            bottom: calc(60px);
+        }
+
+        #sticky-button.open + #image-container #image3 {
+            background-color: transparent;
+            right: calc(120px);
+            bottom: calc(10px);
+        }
+
+        #sticky-button.open + #image-container img:hover {
+            transform: scale(1.2) rotate(0deg);
+        }
+
+        #sticky-button.open + #image-container.open ~ #sticky-button {
+            bottom: 500px;
+        }
+
+        #image-container {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <div id="sticky">
+<div id="sticky">
     <div id="sticky-button">Order Now</div>
     <div id="image-container">
-      <img src="static/deliveroo.png">
-      <img src="static/just-eat.png">
-      <img src="static/uber-eats.jpeg">
+        <a href="https://deliveroo.co.uk/menu/birmingham/blackheath/taste-of-himilayan">
+            <img id="image1" title="Deliveroo Logo" src="static/deliveroo.png">
+        </a>
+        <a href="https://www.just-eat.co.uk/restaurants-taste-of-himalayan-rowley-regis/menu">
+            <img  id="image2" title="Just Eat Logo" src="static/just-eat.png">
+        </a>
+        <a href="https://www.ubereats.com/gb/store/taste-of-himalayan/-0_ezf8wQNq_1bXOb49OrA">
+            <img id="image3" title="Uber Eats Logo" src="static/uber-eats.jpeg">
+        </a>
     </div>
-    
+
     <script>
-      let click = true;
-      const stickyButton = document.getElementById('sticky-button');
-      const imageContainer = document.getElementById('image-container');
-      
-      stickyButton.addEventListener('click', function() {
-        click = !click;
-        let text = click ? "Order Now" : "X"
-        stickyButton.classList.toggle('open');
-        stickyButton.innerHTML = text;
-        imageContainer.classList.toggle('open');
-      });
+        let click = true;
+        const stickyButton = document.getElementById('sticky-button');
+        const imageContainer = document.getElementById('image-container');
+
+        stickyButton.addEventListener('click', function() {
+            click = !click;
+            let text = click ? "Order Now" : "X"
+            imageContainer.style.display = click ? "none" : "inline";
+            stickyButton.classList.toggle('open');
+            stickyButton.innerHTML = text;
+            imageContainer.classList.toggle('open');
+        });
     </script>
     <embed class="pdf" src="https://drive.google.com/file/d/19nNH5MUy4S1l7Fi4qs3QjG5HgXo5s3rr/preview" />
+</div>
 </body>
 </html>
